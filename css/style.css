@@ -1,0 +1,62 @@
+
+#grid td {
+    border: 1px solid black;
+    height: 100px;
+    width: 100px;
+    position: relative;
+}
+#grid table
+{
+	width: 500px;
+	height: 500px;
+}
+
+#username
+{
+	font-weight: bold;
+	font-size: 14px;
+}
+#menu 
+{
+	float:right; 
+	width:200px; 
+	padding:10px; 
+	margin:10px;
+}
+
+button
+{
+	height: 50px;
+	width: 150px;
+}
+
+
+.gradientBoxesWithOuterShadows
+{ 
+	height: auto;
+	width: 400px; 
+	padding: 20px;
+	background-color: white; 
+
+	/* outer shadows  (note the rgba is red, green, blue, alpha) */
+	-webkit-box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.4); 
+	-moz-box-shadow: 0px 1px 6px rgba(23, 69, 88, .5);
+
+	/* rounded corners */
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 7px; 
+	border-radius: 7px;
+
+	/* gradients */
+	background: -webkit-gradient(linear, left top, left bottom, 
+	color-stop(0%, white), color-stop(15%, white), color-stop(100%, #D7E9F5)); 
+	background: -moz-linear-gradient(top, white 0%, white 55%, #D5E4F3 130%); 
+}
+
+.table-center th, .table-center td {
+    border-top: 1px solid #DDDDDD;
+    line-height: 18px;
+    padding: 8px;
+    text-align: center;
+    vertical-align: top;
+}

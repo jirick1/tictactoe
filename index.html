@@ -1,0 +1,91 @@
+<html>
+<head>
+
+<title>Tictactoe</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="js/external/jquery-1.11.0.min.js"></script>
+<script src="js/controller.js"></script>
+<script src="js/view.js"></script>
+<script type="text/javascript">
+/*
+Author: Jame Irick
+Description: simple tictactoe game written in JavaScript and HTML
+Date created: 7/17/2014
+Verion: 0.1
+*/
+$(document).ready( function() {
+	ViewController.init();
+});
+
+</script>
+</head>
+<body>
+
+<div class="gradientBoxesWithOuterShadows" id="menu">
+	<div>
+		<form id="mode">
+			<fieldset>
+				<legend>Mode:</legend>
+				<input type="radio" name="player" id="one_player" value="one_player" />
+				<label for="one_player">Single Player Mode</label><br />
+
+				<input type="radio" name="player" id="two_player" value="two_player" />
+				<label for="two_player">Two players Mode</label><br />
+			</fieldset>
+		</form>
+
+		<form id="sign">
+			<fieldset>
+				<legend>Character:</legend>
+				<input type="radio" name="character" value="x" /> X's (default)<br />
+				<input type="radio" name="character" value="o" /> O's <br />
+			</fieldset>
+		</form>
+	</div>
+
+
+	<table>
+		<tr>
+			<td>X socre:</td><td><span id="x_score">0</span></td>
+		</tr>
+		<tr>
+			<td>O score:</td><td><span id="o_score">0</span></td>
+		</tr>
+	</table>
+
+	<div style="margin-top:15px; padding:15px;">
+		<p>
+	    	<button onclick="ViewController.onResetClick()">Reset game</button>
+		</p>
+	</div>
+
+</div>
+<div>
+<h2>Tictactoe</h2>
+<p>
+	<div id="info">
+		<h3 id="status"></h3>
+	</div>
+	<table id="grid" class="table table-center">
+		<tr>
+			<td id="r1c1"></td>
+			<td id="r1c2"></td>
+			<td id="r1c3"></td>
+		</tr>
+		<tr>
+			<td id="r2c1"></td>
+			<td id="r2c2"></td>
+			<td id="r2c3"></td>
+		</tr>
+		<tr>
+			<td id="r3c1"></td>
+			<td id="r3c2"></td>
+			<td id="r3c3"></td>
+		</tr>
+	</table>
+
+</p>
+</div>
+
+</body>
+</html>
