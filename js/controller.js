@@ -23,7 +23,6 @@ var ViewController = {
     init: function ()
     {
         View.init();
-        $('#mode').focus();
         alert("Please select a mode");
     },
 
