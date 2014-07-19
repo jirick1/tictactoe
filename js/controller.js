@@ -8,7 +8,7 @@ var DisplayMessage = {
 };
 
 var ViewController = {
-    AI_TIMEOUT: 100,
+    AI_TIMEOUT: 100, // change the speed in which the AI respondes
     _x: "<img src=\"img/x.png\"/> ",
     _o: "<img src=\"img/o.png\"/> ",
 
@@ -455,6 +455,10 @@ var ViewController = {
         else if (!rowThreeColumnThree)
         {
             View.updateUI("r3c3", image);
+        }
+        else if (!rowOneColumnTwo)
+        {
+        	View.updateUI("r1c2", image);
         }
 
         /*
