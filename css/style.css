@@ -5,10 +5,11 @@
     width: 100px;
     position: relative;
 }
-#grid table
+#grid
 {
 	width: 500px;
 	height: 500px;
+	empty-cells: show;
 }
 
 #username
