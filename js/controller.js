@@ -5,6 +5,7 @@ var DisplayMessage = {
     WON_MSG: 'Congradulations you\'ve won.',
     LOST_MSG: 'You\'ve lost, better luck next time.',
     DRAW_MSG: 'This game ended with a draw. ',
+    MULTI_MODE_WIN_MSG: ' \'s won the game',
 };
 
 var ViewController = {
@@ -173,7 +174,16 @@ var ViewController = {
                     ViewController._sign = 'x';
                 }
             }
-            ViewController._checkAndDisplayWinner();
+            
+            if (ViewController._isThereAnyMovesLeft())
+			{
+            	 ViewController._checkAndDisplayWinner();
+			}
+            else
+            {
+            	View.updateUI("status", DisplayMessage.DRAW_MSG);
+				View.showHide("info", true);
+            }
         }
     },
 
@@ -209,6 +219,27 @@ var ViewController = {
         }
         return val;
     },
+    
+    _isThereAnyMovesLeft: function()
+	{
+		var r1c1 = ViewController._XorO("r1c1");
+		var r1c2 = ViewController._XorO("r1c2");
+		var r1c3 = ViewController._XorO("r1c3");
+		var r2c1 = ViewController._XorO("r2c1");
+		var r2c2 = ViewController._XorO("r2c2");
+		var r2c3 = ViewController._XorO("r2c3");
+		var r3c1 = ViewController._XorO("r3c1");
+		var r3c2 = ViewController._XorO("r3c2");
+		var r3c3 = ViewController._XorO("r3c3");
+
+		var moves = true;
+		if (r1c1 && r1c2 && r1c3 && r2c1 && 
+			r2c2 && r2c3 && r3c1 && r3c2 && r3c3)
+		{
+			moves = false;
+		}
+		return moves;
+	},
 
     /**
      * @function check if the user or computer won
@@ -283,18 +314,28 @@ var ViewController = {
 
         if (didSomeoneWin)
         {
-            if (ViewController._sign == winner)
-            {
-                View.showHide("info", false);
-                View.updateUI("status", DisplayMessage.WON_MSG);
-                console.log("you won");
-            }
-            else
-            {
-                View.showHide("info", true);
-                View.updateUI("status", DisplayMessage.LOST_MSG);
-                console.log("you lost");
-            }
+        	if (!ViewController._twoPlayerMode)
+			{
+				if (ViewController._sign == winner)
+				{
+					
+					View.updateUI("status", DisplayMessage.WON_MSG);
+					View.showHide("info", true);
+					console.log("you won");
+				}
+				else
+				{
+					View.updateUI("status", DisplayMessage.LOST_MSG);
+					View.showHide("info", true);
+					console.log("you lost");
+				}
+			}
+			else
+			{
+				View.showHide("info", true);
+				View.updateUI("status", winner + DisplayMessage.MULTI_MODE_WIN_MSG);
+				console.log(winner + "'s won");
+			}
             ViewController.__updateScore(winner);
             ViewController._isYourTurn = false;
             ViewController._canPlaceMove = false;
