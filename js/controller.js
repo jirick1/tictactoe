@@ -8,7 +8,6 @@ var DisplayMessage = {
 };
 
 var ViewController = {
-    AI_TIMEOUT: 100, // change the speed in which the AI respondes
     _x: "<img src=\"img/x.png\"/> ",
     _o: "<img src=\"img/o.png\"/> ",
 
@@ -138,20 +137,17 @@ var ViewController = {
             var userSign = (ViewController._sign == 'x') ? ViewController._x : ViewController._o;
             View.updateUI(element.currentTarget.id, userSign);
 
-            setTimeout(function ()
-            {
-                try
-                {
-                    ViewController._checkAndDisplayWinner();
-                    ViewController.aiPlaceLetter();
-                    ViewController._checkAndDisplayWinner();
-                }
-                catch (err)
-                {
-                    View.updateUI("status", DisplayMessage.DRAW_MSG);
-                }
-
-            }, ViewController.AI_TIMEOUT);
+            try
+			{
+				ViewController._checkAndDisplayWinner();
+				ViewController.aiPlaceLetter();
+				ViewController._checkAndDisplayWinner();
+			}
+			catch(err) 
+			{
+				View.updateUI("status", DisplayMessage.DRAW_MSG);
+				View.showHide("info", true);
+			}
         }
     },
 
