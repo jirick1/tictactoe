@@ -1,6 +1,8 @@
 tictactoe
 =========
 
+Preview: http://htmlpreview.github.io/?https://github.com/jirick1987/tictactoe/blob/master/index.html
+
 Here is your assignment:
 
     *Create a game of Tic Tac Toe
