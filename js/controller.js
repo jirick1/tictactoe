@@ -423,8 +423,8 @@ var ViewController = {
         var rowThreeColumnTwo = ViewController._XorO("r3c2");
         var rowThreeColumnThree = ViewController._XorO("r3c3");
 
-        var image = (ViewController._sign == 'x') ? ViewController._o :
-            ViewController._x;
+        var image = (ViewController._sign == 'x') ? ViewController._x :
+            ViewController._o;
         ViewController._isYourTurn = true;
 
         /*
