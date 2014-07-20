@@ -1,7 +1,4 @@
 var DisplayMessage = {
-    WELCOME_MSG: 'Welcome user',
-    PROMPT_NAME: 'Please enter a username',
-    CHOOSE_MSG: 'Choose sign X or O',
     WON_MSG: 'Congradulations you\'ve won.',
     LOST_MSG: 'You\'ve lost, better luck next time.',
     DRAW_MSG: 'This game ended with a draw. ',
