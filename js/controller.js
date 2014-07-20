@@ -423,8 +423,20 @@ var ViewController = {
         var rowThreeColumnTwo = ViewController._XorO("r3c2");
         var rowThreeColumnThree = ViewController._XorO("r3c3");
 
-        var image = (ViewController._sign == 'x') ? ViewController._x :
-            ViewController._o;
+        var image;
+        if (ViewController._sign == 'x')
+        {
+        	image = ViewController._o;
+        }
+        else if (ViewController._sign == 'o')
+        {
+        	image = ViewController._x;
+        }
+        else
+        {
+        	throw 'error unable to determined sign';
+        }
+        
         ViewController._isYourTurn = true;
 
         /*
