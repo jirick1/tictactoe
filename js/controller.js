@@ -134,20 +134,21 @@ var ViewController = {
         {
             ViewController._isYourTurn = false;
 
-            var userSign = (ViewController._sign == 'x') ? ViewController._x : ViewController._o;
+            var userSign = (ViewController._sign == 'x') ?
+                ViewController._x : ViewController._o;
             View.updateUI(element.currentTarget.id, userSign);
 
             try
-			{
-				ViewController._checkAndDisplayWinner();
-				ViewController.aiPlaceLetter();
-				ViewController._checkAndDisplayWinner();
-			}
-			catch(err) 
-			{
-				View.updateUI("status", DisplayMessage.DRAW_MSG);
-				View.showHide("info", true);
-			}
+            {
+                ViewController._checkAndDisplayWinner();
+                ViewController.aiPlaceLetter();
+                ViewController._checkAndDisplayWinner();
+            }
+            catch (err)
+            {
+                View.updateUI("status", DisplayMessage.DRAW_MSG);
+                View.showHide("info", true);
+            }
         }
     },
 
@@ -160,7 +161,8 @@ var ViewController = {
                 ViewController._playerOneTurn = false;
                 if (ViewController._sign == 'x')
                 {
-                    View.updateUI(element.currentTarget.id, ViewController._x);
+                    View.updateUI(element.currentTarget.id,
+                        ViewController._x);
                     ViewController._sign = 'o';
                 }
             }
@@ -169,19 +171,20 @@ var ViewController = {
                 ViewController._playerOneTurn = true;
                 if (ViewController._sign == 'o')
                 {
-                    View.updateUI(element.currentTarget.id, ViewController._o);
+                    View.updateUI(element.currentTarget.id,
+                        ViewController._o);
                     ViewController._sign = 'x';
                 }
             }
-            
+
             if (ViewController._isThereAnyMovesLeft())
-			{
-            	 ViewController._checkAndDisplayWinner();
-			}
+            {
+                ViewController._checkAndDisplayWinner();
+            }
             else
             {
-            	View.updateUI("status", DisplayMessage.DRAW_MSG);
-				View.showHide("info", true);
+                View.updateUI("status", DisplayMessage.DRAW_MSG);
+                View.showHide("info", true);
             }
         }
     },
@@ -192,7 +195,8 @@ var ViewController = {
      */
     _isNotEmpty: function (element)
     {
-        return (element.currentTarget.innerHTML.indexOf("x.png") != -1 || element.currentTarget.innerHTML
+        return (element.currentTarget.innerHTML.indexOf("x.png") != -1 ||
+            element.currentTarget.innerHTML
             .indexOf("o.png") != -1);
     },
 
@@ -204,11 +208,13 @@ var ViewController = {
     _XorO: function (element)
     {
         var val = null;
-        if (document.getElementById(element).innerHTML.indexOf("x.png") != -1)
+        if (document.getElementById(element).innerHTML.indexOf("x.png") !=
+            -1)
         {
             val = 'x'
         }
-        else if (document.getElementById(element).innerHTML.indexOf("o.png") != -1)
+        else if (document.getElementById(element).innerHTML.indexOf(
+            "o.png") != -1)
         {
             val = 'o'
         }
@@ -218,27 +224,27 @@ var ViewController = {
         }
         return val;
     },
-    
-    _isThereAnyMovesLeft: function()
-	{
-		var r1c1 = ViewController._XorO("r1c1");
-		var r1c2 = ViewController._XorO("r1c2");
-		var r1c3 = ViewController._XorO("r1c3");
-		var r2c1 = ViewController._XorO("r2c1");
-		var r2c2 = ViewController._XorO("r2c2");
-		var r2c3 = ViewController._XorO("r2c3");
-		var r3c1 = ViewController._XorO("r3c1");
-		var r3c2 = ViewController._XorO("r3c2");
-		var r3c3 = ViewController._XorO("r3c3");
 
-		var moves = true;
-		if (r1c1 && r1c2 && r1c3 && r2c1 && 
-			r2c2 && r2c3 && r3c1 && r3c2 && r3c3)
-		{
-			moves = false;
-		}
-		return moves;
-	},
+    _isThereAnyMovesLeft: function ()
+    {
+        var r1c1 = ViewController._XorO("r1c1");
+        var r1c2 = ViewController._XorO("r1c2");
+        var r1c3 = ViewController._XorO("r1c3");
+        var r2c1 = ViewController._XorO("r2c1");
+        var r2c2 = ViewController._XorO("r2c2");
+        var r2c3 = ViewController._XorO("r2c3");
+        var r3c1 = ViewController._XorO("r3c1");
+        var r3c2 = ViewController._XorO("r3c2");
+        var r3c3 = ViewController._XorO("r3c3");
+
+        var moves = true;
+        if (r1c1 && r1c2 && r1c3 && r2c1 &&
+            r2c2 && r2c3 && r3c1 && r3c2 && r3c3)
+        {
+            moves = false;
+        }
+        return moves;
+    },
 
     /**
      * @function check if the user or computer won
@@ -313,28 +319,28 @@ var ViewController = {
 
         if (didSomeoneWin)
         {
-        	if (!ViewController._twoPlayerMode)
-			{
-				if (ViewController._sign == winner)
-				{
-					
-					View.updateUI("status", DisplayMessage.WON_MSG);
-					View.showHide("info", true);
-					console.log("you won");
-				}
-				else
-				{
-					View.updateUI("status", DisplayMessage.LOST_MSG);
-					View.showHide("info", true);
-					console.log("you lost");
-				}
-			}
-			else
-			{
-				View.showHide("info", true);
-				View.updateUI("status", winner + DisplayMessage.MULTI_MODE_WIN_MSG);
-				console.log(winner + "'s won");
-			}
+            if (!ViewController._twoPlayerMode)
+            {
+                if (ViewController._sign == winner)
+                {
+
+                    View.updateUI("status", DisplayMessage.WON_MSG);
+                    View.showHide("info", true);
+                    console.log("you won");
+                }
+                else
+                {
+                    View.updateUI("status", DisplayMessage.LOST_MSG);
+                    View.showHide("info", true);
+                    console.log("you lost");
+                }
+            }
+            else
+            {
+                View.showHide("info", true);
+                View.updateUI("status", winner + DisplayMessage.MULTI_MODE_WIN_MSG);
+                console.log(winner + "'s won");
+            }
             ViewController.__updateScore(winner);
             ViewController._isYourTurn = false;
             ViewController._canPlaceMove = false;
@@ -358,7 +364,8 @@ var ViewController = {
         var rowThreeColumnTwo = ViewController._XorO("r3c2");
         var rowThreeColumnThree = ViewController._XorO("r3c3");
 
-        var image = (ViewController._sign == 'x') ? ViewController._o : ViewController._x;
+        var image = (ViewController._sign == 'x') ? ViewController._o :
+            ViewController._x;
         ViewController._isYourTurn = true;
 
         /*
@@ -368,111 +375,138 @@ var ViewController = {
         {
             View.updateUI("r2c2", image);
         }
-        else if (rowOneColumnOne && rowOneColumnOne == rowOneColumnTwo && rowOneColumnThree == null)
+        else if (rowOneColumnOne && rowOneColumnOne == rowOneColumnTwo &&
+            rowOneColumnThree == null)
         {
             View.updateUI("r1c3", image);
         }
-        else if (rowOneColumnTwo && rowOneColumnTwo == rowOneColumnThree && rowOneColumnOne == null)
+        else if (rowOneColumnTwo && rowOneColumnTwo ==
+            rowOneColumnThree && rowOneColumnOne == null)
         {
             View.updateUI("r1c1", image);
         }
-        else if (rowOneColumnOne && rowOneColumnOne == rowOneColumnThree && rowOneColumnTwo == null)
+        else if (rowOneColumnOne && rowOneColumnOne ==
+            rowOneColumnThree && rowOneColumnTwo == null)
         {
             View.updateUI("r1c2", image);
         }
-        else if (rowTwoColumnTwo && rowTwoColumnTwo == rowTwoColumnThree && rowTwoColumnOne == null)
+        else if (rowTwoColumnTwo && rowTwoColumnTwo ==
+            rowTwoColumnThree && rowTwoColumnOne == null)
         {
             View.updateUI("r2c1", image);
         }
-        else if (rowTwoColumnThree && rowTwoColumnThree == rowTwoColumnOne && rowTwoColumnTwo == null)
+        else if (rowTwoColumnThree && rowTwoColumnThree ==
+            rowTwoColumnOne && rowTwoColumnTwo == null)
         {
             View.updateUI("r2c2", image);
         }
-        else if (rowTwoColumnOne && rowTwoColumnOne == rowTwoColumnTwo && rowTwoColumnThree == null)
+        else if (rowTwoColumnOne && rowTwoColumnOne == rowTwoColumnTwo &&
+            rowTwoColumnThree == null)
         {
             View.updateUI("r2c3", image);
         }
-        else if (rowThreeColumnOne && rowThreeColumnOne == rowThreeColumnTwo && rowThreeColumnThree == null)
+        else if (rowThreeColumnOne && rowThreeColumnOne ==
+            rowThreeColumnTwo && rowThreeColumnThree == null)
         {
             View.updateUI("r3c3", image);
         }
-        else if (rowThreeColumnTwo && rowThreeColumnTwo == rowThreeColumnThree && rowThreeColumnOne == null)
+        else if (rowThreeColumnTwo && rowThreeColumnTwo ==
+            rowThreeColumnThree && rowThreeColumnOne == null)
         {
             View.updateUI("r3c1", image);
         }
-        else if (rowThreeColumnThree && rowThreeColumnThree == rowThreeColumnOne && rowThreeColumnTwo == null)
+        else if (rowThreeColumnThree && rowThreeColumnThree ==
+            rowThreeColumnOne && rowThreeColumnTwo == null)
         {
             View.updateUI("r3c2", image);
         }
-        else if (rowOneColumnOne && rowOneColumnOne == rowTwoColumnOne && rowThreeColumnOne == null)
+        else if (rowOneColumnOne && rowOneColumnOne == rowTwoColumnOne &&
+            rowThreeColumnOne == null)
         {
             View.updateUI("r3c1", image);
         }
-        else if (rowTwoColumnOne && rowTwoColumnOne == rowThreeColumnOne && rowOneColumnOne == null)
+        else if (rowTwoColumnOne && rowTwoColumnOne ==
+            rowThreeColumnOne && rowOneColumnOne == null)
         {
             View.updateUI("r1c1", image);
         }
-        else if (rowThreeColumnOne && rowThreeColumnOne == rowOneColumnOne && rowTwoColumnOne == null)
+        else if (rowThreeColumnOne && rowThreeColumnOne ==
+            rowOneColumnOne && rowTwoColumnOne == null)
         {
             View.updateUI("r2c1", image);
         }
-        else if (rowOneColumnTwo && rowOneColumnTwo == rowTwoColumnTwo && rowThreeColumnTwo == null)
+        else if (rowOneColumnTwo && rowOneColumnTwo == rowTwoColumnTwo &&
+            rowThreeColumnTwo == null)
         {
             View.updateUI("r3c2", image);
         }
-        else if (rowTwoColumnTwo && rowTwoColumnTwo == rowThreeColumnTwo && rowOneColumnTwo == null)
+        else if (rowTwoColumnTwo && rowTwoColumnTwo ==
+            rowThreeColumnTwo && rowOneColumnTwo == null)
         {
             View.updateUI("r1c2", image);
         }
-        else if (rowThreeColumnTwo && rowThreeColumnTwo == rowOneColumnTwo && rowTwoColumnTwo == null)
+        else if (rowThreeColumnTwo && rowThreeColumnTwo ==
+            rowOneColumnTwo && rowTwoColumnTwo == null)
         {
             View.updateUI("r2c2", image);
         }
-        else if (rowOneColumnThree && rowOneColumnThree == rowTwoColumnThree && rowThreeColumnThree == null)
+        else if (rowOneColumnThree && rowOneColumnThree ==
+            rowTwoColumnThree && rowThreeColumnThree == null)
         {
             View.updateUI("r3c3", image);
         }
-        else if (rowTwoColumnTwo && rowTwoColumnThree == rowThreeColumnThree && rowOneColumnThree == null)
+        else if (rowTwoColumnTwo && rowTwoColumnThree ==
+            rowThreeColumnThree && rowOneColumnThree == null)
         {
             View.updateUI("r1c3", image);
         }
-        else if (rowThreeColumnThree && rowThreeColumnThree == rowOneColumnThree && rowTwoColumnThree == null)
+        else if (rowThreeColumnThree && rowThreeColumnThree ==
+            rowOneColumnThree && rowTwoColumnThree == null)
         {
             View.updateUI("r2c3", image);
         }
-        else if (rowOneColumnOne && rowOneColumnOne == rowTwoColumnTwo && rowThreeColumnThree == null)
+        else if (rowOneColumnOne && rowOneColumnOne == rowTwoColumnTwo &&
+            rowThreeColumnThree == null)
         {
             View.updateUI("r3c3", image);
         }
-        else if (rowTwoColumnTwo && rowTwoColumnTwo == rowThreeColumnThree && rowOneColumnOne == null)
+        else if (rowTwoColumnTwo && rowTwoColumnTwo ==
+            rowThreeColumnThree && rowOneColumnOne == null)
         {
             View.updateUI("r1c1", image);
         }
-        else if (rowThreeColumnThree && rowThreeColumnThree == rowOneColumnOne && rowTwoColumnTwo == null)
+        else if (rowThreeColumnThree && rowThreeColumnThree ==
+            rowOneColumnOne && rowTwoColumnTwo == null)
         {
             View.updateUI("r2c2", image);
         }
-        else if (rowThreeColumnOne && rowThreeColumnOne == rowTwoColumnTwo && rowOneColumnThree == null)
+        else if (rowThreeColumnOne && rowThreeColumnOne ==
+            rowTwoColumnTwo && rowOneColumnThree == null)
         {
             View.updateUI("r1c3", image);
         }
-        else if (rowOneColumnThree && rowOneColumnThree == rowThreeColumnOne && rowTwoColumnTwo == null)
+        else if (rowOneColumnThree && rowOneColumnThree ==
+            rowThreeColumnOne && rowTwoColumnTwo == null)
         {
             View.updateUI("r2c2", image);
         }
-        else if (rowTwoColumnTwo && rowTwoColumnTwo == rowOneColumnThree && rowThreeColumnOne == null)
+        else if (rowTwoColumnTwo && rowTwoColumnTwo ==
+            rowOneColumnThree && rowThreeColumnOne == null)
         {
             View.updateUI("r3c1", image);
         }
-        else if (rowTwoColumnThree && rowTwoColumnThree == rowThreeColumnTwo && rowThreeColumnThree == null)
+        else if (rowTwoColumnThree && rowTwoColumnThree ==
+            rowThreeColumnTwo && rowThreeColumnThree == null)
         {
             View.updateUI("r3c3", image);
         }
-        else if (rowOneColumnOne && rowOneColumnOne == rowThreeColumnThree && rowThreeColumnTwo == null)
+        else if (rowOneColumnOne && rowOneColumnOne ==
+            rowThreeColumnThree && rowThreeColumnTwo == null)
         {
             View.updateUI("r3c2", image);
         }
-        else if (rowOneColumnThree && rowOneColumnThree == rowThreeColumnOne && rowTwoColumnOne == null)
+        else if (rowOneColumnThree && rowOneColumnThree ==
+            rowThreeColumnOne && rowTwoColumnOne == null)
         {
             View.updateUI("r2c1", image);
         }
@@ -494,7 +528,7 @@ var ViewController = {
         }
         else if (!rowOneColumnTwo)
         {
-        	View.updateUI("r1c2", image);
+            View.updateUI("r1c2", image);
         }
 
         /*

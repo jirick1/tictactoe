@@ -7,7 +7,7 @@ var View = {
         $("#grid td").click(ViewController.onGridClick)
         $("#mode input[name=player]:radio").change(ViewController.onModeChange);
         $("#sign input[name=character]:radio").change(ViewController.onCharacterChange);
-        
+
         // focus input to mode selection
         $('#mode input[name=player]:radio').focus();
     },
