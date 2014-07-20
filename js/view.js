@@ -47,5 +47,17 @@ var View = {
         {
             ele.style.display = 'none';
         }
+    },
+
+    resetStrikeImage: function ()
+    {
+        var image = $("#image");
+        image.removeClass();
+        image.css(
+        {
+            width: "540px",
+            left: "",
+            top: ""
+        });
     }
 };

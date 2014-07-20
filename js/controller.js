@@ -85,9 +85,12 @@ var ViewController = {
      */
     onResetClick: function ()
     {
-        View.showHide("info", false);
         ViewController._isYourTurn = true;
         ViewController._canPlaceMove = true;
+
+        View.showHide("info", false);
+        View.showHide("image", false);
+        View.resetStrikeImage();
         View.reset();
     },
 
@@ -243,8 +246,18 @@ var ViewController = {
         return moves;
     },
 
+    __gridDiagonalLength: function ()
+    {
+        var grid = $("#grid");
+        var aSquare = Math.pow(grid.height(), 2);
+        var bSquare = Math.pow(grid.width(), 2);
+        var cSquare = Math.sqrt(aSquare + bSquare);
+        return cSquare;
+    },
+
     /**
      * @function check if the user or computer won
+     * 			 displays line strikethrough
      */
     _checkAndDisplayWinner: function ()
     {
@@ -258,6 +271,9 @@ var ViewController = {
         var r3c2 = ViewController._XorO("r3c2");
         var r3c3 = ViewController._XorO("r3c3");
 
+        var image = $("#image");
+        image.removeClass();
+
         var didSomeoneWin = false;
         var winner = null;
 
@@ -266,48 +282,93 @@ var ViewController = {
         {
             didSomeoneWin = true;
             winner = r1c1;
+            image.css(
+            {
+                top: "170px",
+                left: "10px"
+            });
         }
         // across row 2
         else if (r2c1 == r2c2 && r2c2 && r2c2 == r2c3)
         {
             didSomeoneWin = true;
             winner = r2c1;
+            image.css(
+            {
+                top: "350px",
+                left: "10px"
+            });
         }
         // across row 3
         else if (r3c1 == r3c2 && r3c2 && r3c2 == r3c3)
         {
             didSomeoneWin = true;
             winner = r3c1;
+            image.css(
+            {
+                top: "525px",
+                left: "10px"
+            });
         }
-        // column 1 straigt down
+        // column 1 straight down
         else if (r1c1 == r2c1 && r2c1 && r2c1 == r3c1)
         {
             didSomeoneWin = true;
             winner = r1c1;
+            image.addClass("image rotate90");
+            image.css(
+            {
+                left: "100px",
+                width: "515px"
+            });
         }
-        // column 2 straign down
+        // column 2 straight down
         else if (r1c2 == r2c2 && r2c2 && r2c2 == r3c2)
         {
             didSomeoneWin = true;
             winner = r1c2;
+            image.addClass("image rotate90");
+            image.css(
+            {
+                left: "280px",
+                width: "515px"
+            });
         }
-        // column 3 straign down
+        // column 3 straight down
         else if (r1c3 == r2c3 && r2c3 && r2c3 == r3c3)
         {
             didSomeoneWin = true;
             winner = r1c3;
+            image.addClass("image rotate90");
+            image.css(
+            {
+                left: "460px",
+                width: "515px"
+            });
         }
-        // diagonally
+        // diagonally \
         else if (r1c1 == r2c2 && r2c2 && r2c2 == r3c3)
         {
             didSomeoneWin = true;
             winner = r1c1;
+
+            var diagonalLength = ViewController.__gridDiagonalLength();
+            image.width(diagonalLength);
+            image.addClass("image rotate45");
         }
-        // diagonally
+        // diagonally /
         else if (r1c3 == r2c2 && r2c2 && r2c2 == r3c1)
         {
             didSomeoneWin = true;
             winner = r1c3;
+
+            var diagonalLength = ViewController.__gridDiagonalLength();
+            image.width(diagonalLength);
+            image.addClass("image rotate315");
+            image.css(
+            {
+                left: "550px"
+            });
         }
         else
         {
@@ -338,6 +399,7 @@ var ViewController = {
                 View.updateUI("status", winner + DisplayMessage.MULTI_MODE_WIN_MSG);
                 console.log(winner + "'s won");
             }
+            View.showHide("image", true);
             ViewController.__updateScore(winner);
             ViewController._isYourTurn = false;
             ViewController._canPlaceMove = false;
