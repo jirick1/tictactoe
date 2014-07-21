@@ -591,6 +591,11 @@ var ViewController = {
         {
         	View.updateUI("r3c3", image);
         }
+        else if (rowTwoColumnThree && rowTwoColumnThree ==
+        	rowThreeColumnOne && rowThreeColumnThree == null)
+        {
+        	View.updateUI("r3c3", image);
+        }
         else if (!rowOneColumnOne)
         {
             View.updateUI("r1c1", image);
