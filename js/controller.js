@@ -526,7 +526,7 @@ var ViewController = {
         {
             View.updateUI("r3c3", image);
         }
-        else if (rowTwoColumnTwo && rowTwoColumnThree ==
+        else if (rowTwoColumnTwo && rowTwoColumnTwo ==
             rowThreeColumnThree && rowOneColumnThree == null)
         {
             View.updateUI("r1c3", image);
@@ -580,6 +580,16 @@ var ViewController = {
             rowThreeColumnOne && rowTwoColumnOne == null)
         {
             View.updateUI("r2c1", image);
+        }
+        else if (rowOneColumnOne && rowOneColumnOne == 
+        	rowThreeColumnTwo && rowThreeColumnOne == null)
+        {
+        	View.updateUI("r3c1", image);
+        }
+        else if (rowOneColumnThree && rowOneColumnThree ==
+        	rowThreeColumnTwo && rowThreeColumnThree == null)
+        {
+        	View.updateUI("r3c3", image);
         }
         else if (!rowOneColumnOne)
         {
