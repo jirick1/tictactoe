@@ -275,7 +275,7 @@ var ViewController = {
           var diagonalLength = ViewController.__gridDiagonalLength();
           image.width(diagonalLength);
           image.addClass(obj.class);
-          image.css({ left: "550px" });
+          image.css({ left: "0px" });
         }
       }
     });
